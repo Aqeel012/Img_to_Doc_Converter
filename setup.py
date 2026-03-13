@@ -17,8 +17,8 @@ cx_Freeze.setup(
     name='Image to Doc Converter',
     options={'build_exe': {'packages': ['tkinter', 'os', 'pytesseract', 'PIL'], 'include_files': ['icon.ico','tcl86t.dll', 'tk86t.dll']}},
     version='1.0',
-    author='Md. Hasibul Hasan Shovo',
-    author_email='it.hhs19@gmail.com',
+    author='Aqeel Ahmad',
+    author_email='aqeelahamdradhani@gmail.com',
     description='Image to doc converter tool helps to translate JPG or PNG images to word with the assistance of text scanner.',
     keywords=['image to text', 'converter', 'image to text converter', 'image to doc converter', 'image to text generator'],
     executables=executables

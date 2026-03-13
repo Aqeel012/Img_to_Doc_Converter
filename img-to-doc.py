@@ -4,28 +4,28 @@ from pytesseract import *
 from tkinter import *
 from tkinter import filedialog, messagebox
 
-root = Tk()  # creating tkinter window
-root.geometry('500x200')  # setting window size
-root.title('Img to Doc Converter')  # setting window title
-root.wm_iconbitmap('icon.ico')  # setting window icon
+root = Tk()   
+root.geometry('500x200')  
+root.title('Img to Doc Converter')  
+root.wm_iconbitmap('icon.ico')   
 
-# calling pytesseract from directory
-pytesseract.tesseract_cmd = r'C:/Users/MadGeek/AppData/Local/Programs/Tesseract-OCR/tesseract.exe'
+ 
+pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
-# browse file function
+ 
 def browsefunc():
     global filename 
     filename = filedialog.askopenfilename(title='Select a file', filetypes=(('JPEG (*.JPG; *.JPEG; *.JPE)', '*.jpg'), ('PNG (*.PNG)', '*.png'), ('All Files (*.*)', '*.*')))
     path.set(filename)
 
-# open output directory function
+ 
 def output_dir():
     try:
         os.startfile(os.path.split(filename)[0])
     except:
         messagebox.showinfo(title='Warning', message='No directory found!')
 
-# open file function
+ 
 def file_dir():
     try:
         fname = os.path.split(filename)[0] + '/' + os.path.splitext(os.path.basename(filename))[0] + '.doc'
@@ -33,7 +33,7 @@ def file_dir():
     except:
         messagebox.showinfo(title='Warning', message='No file found!')
 
-# image to text conversion function
+ 
 def imgtotext():
     try: 
         img = PIL.Image.open(filename)				
@@ -47,13 +47,13 @@ def imgtotext():
     except:
         messagebox.showinfo(title='Warning', message='Please choose a correct file!')
 
-# label
+ 
 l1 = Label(root, text='Img to Doc Converter', font=('roboto bold', 20)).place(relx=0.5, rely=0.2, anchor=CENTER)
-# variable
+ 
 path = StringVar()
-# entry
+ 
 e1 = Entry(root, width=50, textvariable=path).place(relx=0.4, rely=0.5, anchor=CENTER)
-# buttons
+ 
 b1 = Button(root, text='Browse a file', font=('roboto', 10), command=browsefunc).place(relx=0.85, rely=0.5, anchor=CENTER)
 b2 = Button(root, text='Output Folder', font=('roboto bold', 10), bg='gray', fg='white', command=output_dir).place(relx=0.3, rely=0.75, anchor=CENTER)
 b3 = Button(root, text='Convert', font=('roboto bold', 10), bg='green', fg='white', command=imgtotext).place(relx=0.5, rely=0.75, anchor=CENTER)
